@@ -27,11 +27,15 @@
     }
   },
   "scripts": {
-    "heroku-postbuild": "python setup.py"
+    "heroku-postbuild": "python3 setup.py"
+    "start": "bot.py"
   },
   "formation": {
     "web": {
+      "quantity": 2
+  },
+    "worker": {
       "quantity": 1
-    }
+    } 
   }
 }
