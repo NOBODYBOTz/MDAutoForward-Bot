@@ -27,7 +27,7 @@
     }
   },
   "scripts": {
-    "heroku-postbuild": "python3 setup.py
+    "heroku-postbuild": "python3 setup.py"
   },
   "formation": {
     "web": {
