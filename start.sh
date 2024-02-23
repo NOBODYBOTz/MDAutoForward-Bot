@@ -10,4 +10,4 @@ export BOT_TOKEN=your_bot_token
 export MONGO_URI=your_mongodb_uri
 
 # Start your bot using Python
-python bot.py
+python3 bot.py
