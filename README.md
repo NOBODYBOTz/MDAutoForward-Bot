@@ -23,6 +23,20 @@ To use this bot, follow these steps:
 6. Add your dummy bot tokens to `dummybot_tokens.py` (if using the dummy bot method).
 7. Run `bot.py` to start your Telegram bot.
 
+<b>Deploy</b><br>
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/Daneil-k/MDAutoForward-Bot)
+
+<b>Commands</b>
+```python
+start - Check if the bot is alive.
+forward - Forward messages.
+private_forward - Forward messages from private chats.
+unequify - Delete duplicate media messages in chats.
+settings - Configure your bot's settings.
+stop - Stop ongoing tasks.
+reset - Reset your bot's settings.
+```
+
 ## Usage
 
 Once your bot is up and running, you can interact with it through Telegram. Here are some available commands:
