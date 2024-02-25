@@ -3,5 +3,5 @@ pyrogram
 pymongo
 python-telegram-bot
 dnspython
-Python
+Python==3.11.8
 aiogram
