@@ -7,6 +7,7 @@ from telegram.constants import ParseMode
 from telegram.ext import Updater, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackContext, CallbackQueryHandler
 from pymongo import MongoClient
 from config import BOT_TOKEN, MONGODB_URI, API_ID, API_HASH
+from aiogram import Bot, Dispatcher, Filters, ConversationHandler, MessageHandler
 
 # Initialize logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -280,14 +281,13 @@ def add_button(update: Update, context: CallbackContext):
 
 # Conversation handler for filter settings
 filter_settings_conversation = ConversationHandler(
-    entry_points=[CommandHandler('filters', filters)],
+    entry_points=[CommandHandler("filters", Filters.text)],
     states={
-        STATE_ONE: [MessageHandler(filters.Text & (~filters.Command), next)],
-        STATE_TWO: [MessageHandler(filters.Text & (~filters.Command), add_button)],
+        STATE_ONE: [MessageHandler(Filters.text & ~Filters.command, next)],
+        STATE_TWO: [MessageHandler(Filters.text & ~Filters.command, add_button)],
     },
     fallbacks=[],
 )
-
 
 # Add command handlers
 dispatcher.add_handler(CommandHandler('add_database', add_database))
