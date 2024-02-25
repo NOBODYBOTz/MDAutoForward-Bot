@@ -3,17 +3,17 @@ import os
 import psutil
 import telegram
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram import ParseMode
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, ConversationHandler, CallbackContext, CallbackQueryHandler
+from telegram.constants import ParseMode
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, ConversationHandler, CallbackContext, CallbackQueryHandler
 from pymongo import MongoClient
-from config import TELEGRAM_BOT_TOKEN, DUMMY_BOT_TOKEN, MONGODB_URI, API_ID, API_HASH, PYROGRAM_STRING_SESSION
+from config import BOT_TOKEN, MONGODB_URI, API_ID, API_HASH
 
 # Initialize logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 # Initialize Telegram bot
-bot = telegram.Bot(token=TELEGRAM_BOT_TOKEN)
+bot = telegram.Bot(token=BOT_TOKEN)
 
 # Create a MongoDB client
 mongo_client = MongoClient(MONGODB_URI)
@@ -25,6 +25,7 @@ forwarded_messages_collection = db['forwarded_messages']
 STATE_ONE, STATE_TWO = range(2)
 CHOOSING, SELECT_OPTION, SETTING_NAME, SETTING_VALUE = range(4)
 
+# Rest of the code goes here...
 # Define command handlers
 def start(update: Update, context: CallbackContext):
     user = update.effective_user
@@ -281,11 +282,12 @@ def add_button(update: Update, context: CallbackContext):
 filter_settings_conversation = ConversationHandler(
     entry_points=[CommandHandler('filters', filters)],
     states={
-        STATE_ONE: [MessageHandler(Filters.text & ~Filters.command, next)],
-        STATE_TWO: [MessageHandler(Filters.text & ~Filters.command, add_button)],
+        STATE_ONE: [MessageHandler(filters.Text & (~filters.Command), next)],
+        STATE_TWO: [MessageHandler(filters.Text & (~filters.Command), add_button)],
     },
     fallbacks=[],
 )
+
 
 # Add command handlers
 dispatcher.add_handler(CommandHandler('add_database', add_database))
