@@ -3,5 +3,4 @@ pyrogram
 pymongo
 python-telegram-bot
 dnspython
-Python
 aiogram
