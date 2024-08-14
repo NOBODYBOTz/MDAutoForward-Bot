@@ -1,9 +1,8 @@
 import logging
 import os
 import psutil
-import telegram
-from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
-from telegram.constants import ParseMode
+import telegram 
+from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
 from telegram.ext import Updater, Filters, CommandHandler, MessageHandler, ConversationHandler, CallbackContext, CallbackQueryHandler
 from pymongo import MongoClient
 from config import BOT_TOKEN, MONGODB_URI, API_ID, API_HASH
