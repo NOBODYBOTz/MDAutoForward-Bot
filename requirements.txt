@@ -1,6 +1,6 @@
 psutil
 pyrogram
 pymongo
-python-telegram-bot
+python-telegram-bot==13.10
 dnspython
 aiogram==2.17
