@@ -300,7 +300,7 @@ dispatcher.add_handler(filter_settings_conversation)  # Add conversation handler
 
 
 # Initialize the Updater and dispatcher
-updater = Updater(token=TELEGRAM_BOT_TOKEN, use_context=True)
+updater = Updater(token=BOT_TOKEN, use_context=True)
 dispatcher = updater.dispatcher
 
 # Register command handlers
