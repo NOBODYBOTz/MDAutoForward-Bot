@@ -3,10 +3,10 @@ import os
 import psutil
 import telegram 
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup, ParseMode
-from telegram.ext import Updater, Filters, CommandHandler, MessageHandler, ConversationHandler, CallbackContext, CallbackQueryHandler
+from telegram.ext import Updater, Filters, CommandHandler, MessageHandler, ConversationHandler, CallbackContext, CallbackQueryHandler, Dispatcher
 from pymongo import MongoClient
 from config import BOT_TOKEN, MONGODB_URI, API_ID, API_HASH
-from aiogram import Bot, Dispatcher
+from aiogram import Bot
 
 # Initialize logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s', level=logging.INFO)
@@ -289,11 +289,15 @@ filter_settings_conversation = ConversationHandler(
 )
 
 # Add command handlers
+updater = Updater(BOT_TOKEN)
+dispatcher = updater.dispatcher
+
 dispatcher.add_handler(CommandHandler('add_database', add_database))
 dispatcher.add_handler(filter_settings_conversation)  # Add conversation handler for filters
 
 
 # Add other handlers and conversation handlers as needed
+
 
 # Initialize the Updater and dispatcher
 updater = Updater(token=TELEGRAM_BOT_TOKEN, use_context=True)
